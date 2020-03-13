@@ -3,6 +3,7 @@ import twitter
 import time
 import datetime
 
+
 def get_statuses_between_dates(api, screen_name, start_at, end_at, writer):
     """ Get User Tweets between two dates
 
@@ -17,7 +18,6 @@ def get_statuses_between_dates(api, screen_name, start_at, end_at, writer):
         Saved tweets
     """
     tweets = []
-    size = 0
 
     start_at = datetime.datetime.strptime(start_at, '%d%m%Y')
     end_at = datetime.datetime.strptime(end_at, '%d%m%Y')
@@ -54,7 +54,7 @@ def get_statuses_between_dates(api, screen_name, start_at, end_at, writer):
                         tweets.append(status.id)
                         add_status(status, screen_name, writer)
                         print(
-                        f'Tweet {status.id_str} founded! Created at {created_at}')
+                            f'Tweet {status.id_str} founded! Created at {created_at}')
 
         tweets = []
 
@@ -90,7 +90,8 @@ def add_status(status, screen_name, writer):  # TODO: Return bool if saved
     writer.writerow(output)
 
 
-def conn_api(TWITTER_API_CONSUMER_KEY, TWITTER_API_CONSUMER_SECRET_KEY, TWITTER_API_ACCESS_TOKEN, TWITTER_API_ACCESS_TOKEN_SECRET):
+def conn_api(TWITTER_API_CONSUMER_KEY, TWITTER_API_CONSUMER_SECRET_KEY, TWITTER_API_ACCESS_TOKEN,
+             TWITTER_API_ACCESS_TOKEN_SECRET):
     """ Connect to Twitter API
 
     Returns:
